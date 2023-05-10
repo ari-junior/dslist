@@ -20,13 +20,13 @@ public class GameController {
 	private GameService gameService;
 	
 	@GetMapping(value = "/{id}")
-	public GameDTO finfById(@PathVariable Long id) {//@PatchMapping, vincula o id com o que foi digitado na URL
+	public GameDTO findById(@PathVariable Long id) {//@PatchMapping, vincula o id com o que foi digitado na URL
 		GameDTO result = gameService.findById(id);
 		return result;
 	}
 	
 	@GetMapping	
-	public List<GameMinDTO> finfAll() {
+	public List<GameMinDTO> findAll() {
 		List<GameMinDTO> result = gameService.findAll();
 		return result;
 	}
