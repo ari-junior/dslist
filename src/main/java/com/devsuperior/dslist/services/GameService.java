@@ -16,11 +16,11 @@ import com.devsuperior.dslist.repositories.GameRepository;
 public class GameService {
 	
 	@Autowired //injeção
-	private GameRepository gamerepository;
+	private GameRepository gameRepository;
 	
 	@Transactional(readOnly = true)//deixa o banco de dados mais rápido, não bloqueio ele para a escrita, consulta apenas
 	public GameDTO findById(Long gameId) {		
-		Game result = gamerepository.findById(gameId).get();
+		Game result = gameRepository.findById(gameId).get();
 		GameDTO dto = new GameDTO(result); //Dúvida, essa thread não fica em memória, ela termina dps?
 		
 		//falta tratamente se não encontrar o ID
@@ -31,7 +31,7 @@ public class GameService {
 	@Transactional(readOnly = true)
 	public List<GameMinDTO> findAll(){
 		//var result = gamerepository.findAll(); ou
-		List<Game> result = gamerepository.findAll();
+		List<Game> result = gameRepository.findAll();
 		List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
 		return dto;
 		
