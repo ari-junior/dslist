@@ -10,9 +10,9 @@ import com.devsuperior.dslist.entities.Game;
 
 public interface GameRepository extends JpaRepository<Game, Long>{
 	
-	//nativeQuery = true -> para desabilitar a linguagem JPQL e habilitar a SQL, e o resultado da consulta vira uma interface
+	/*nativeQuery = true -> para desabilitar a linguagem JPQL e habilitar a SQL, e o resultado da consulta vira uma interface*/
 	@Query(nativeQuery = true, value = """
-			SELECT tb_game.id, tb_game.title, tb_game.game_year AS `year`, tb_game.img_url AS imgUrl,
+			SELECT tb_game.id, tb_game.title, tb_game.game_year AS gameYear, tb_game.img_url AS imgUrl,
 			tb_game.short_description AS shortDescription, tb_belonging.position
 			FROM tb_game
 			INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
